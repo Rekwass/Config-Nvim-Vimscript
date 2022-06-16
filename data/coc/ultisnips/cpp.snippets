@@ -1,0 +1,213 @@
+# A valid snippet should starts with:
+# snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet unused "Create unused var macro"
+#define UNUSED __attribute__((unused))
+endsnippet
+
+snippet inc "Create system include line" b
+#include <${1:librarie}>
+endsnippet
+
+snippet Inc "Create custom include line" b
+#include "${1:#librarie}"
+endsnippet
+
+snippet ifndef "Create no include loop guard"
+#ifndef ${1:NAME}_H
+#define $1_H
+
+
+
+#endif // $1_H
+endsnippet
+
+snippet out "Basic print"
+std::cout << ${1:"debug"} << "\n";
+endsnippet
+
+snippet if "Create if"
+if (${1:condition}) {
+	${2:code}
+}
+endsnippet
+
+snippet elif "Create else if"
+else if {
+	${1:code}
+}
+endsnippet
+
+snippet else "Create else"
+else {
+	${1:code}
+}
+endsnippet
+
+snippet switch "Create switch with default"
+switch (${1:variable}) {
+	case ${2:case}:
+		${3:code}
+		break;
+	default:
+		${4:code}
+}
+endsnippet
+
+snippet switchs "Create switch without default"
+switch (${1:variable}) {
+	case ${2:value}:
+		${3:code}
+		break;
+}
+endsnippet
+
+snippet case "Create a switch case"
+case ${1:value}
+	${2:code}
+	break;
+endsnippet
+
+snippet tern "Create ternaire"
+${1:condition} ? ${2:true} : ${3:false}
+endsnippet
+
+snippet while "Create while"
+while (${1:condition}) {
+	${2:code}
+}
+endsnippet
+
+snippet for "Create for"
+for (${1:init}; ${2:condition}; ${3:index}) {
+	${4:code}
+}
+endsnippet
+
+snippet forn "Create long navigator for"
+for (${3:int} ${4:i} = ${5:0}; ${2:i} < ${1:count}; ${7:++}${6:i}) {
+	${8:code}
+}
+endsnippet
+
+snippet struct "Struct definition"
+struct ${1:name} {
+	${2:code}
+};
+endsnippet
+
+snippet enum "Enum definition"
+enum class ${1:name} {
+	${2:code}
+};
+endsnippet
+
+snippet ret "Basic return"
+return ${1:value};
+endsnippet
+
+snippet fun "Basic function definition"
+${2:void} ${1:function}(${3:void})
+{
+	${4:code}
+}
+endsnippet
+
+snippet dfun "Basic function prototype"
+/*
+** ${2:Brief}
+*/
+${3:void} ${1:function}(${4:void});
+endsnippet
+
+snippet fun1 "Basic function definition with 1 parameter"
+${2:void} ${1:function}(${4:int} ${3:var})
+{
+	${5:code}
+}
+endsnippet
+
+snippet dfun1 "Basic function prototype with 1 parameter"
+/*
+** ${2:Brief}
+**
+** $4 -> ${6:description}
+*/
+${3:void} ${1:function}(${5:int} ${4:var});
+endsnippet
+
+snippet fun2 "Basic function definition with 2 parameters"
+${2:void} ${1:function}(${4:int} ${3:var}, ${6:int} ${5:var})
+{
+	${7:code}
+}
+endsnippet
+
+snippet dfun2 "Basic function prototype with 2 parameters"
+/*
+** ${2:Brief}
+**
+** $4 -> ${6:description}
+** $7 -> ${9:description}
+*/
+${3:void} ${1:function}(${5:int} ${4:var}, ${8:int} ${7:var});
+endsnippet
+
+snippet fun3 "Basic function definition with 3 parameters"
+${2:void} ${1:function}(${4:int} ${3:var}, ${6:int} ${5:var}, ${8:int} ${7:var})
+{
+	${9:code}
+}
+endsnippet
+
+snippet dfun3 "Basic function prototype with 3 parameters"
+/*
+** ${2:Brief}
+**
+** $4 -> ${6:description}
+** $7 -> ${9:description}
+** $10 -> ${12:description}
+*/
+${3:void} ${1:function}(${5:int} ${4:var}, ${8:int} ${7:var}, ${11:int} ${19:var});
+endsnippet
+
+snippet fun4 "Basic function definition with 4 parameters"
+${2:void} ${1:function}(${4:int} ${3:var}, ${6:int} ${5:var}, ${8:int} ${7:var}, ${10:int} ${9:var})
+{
+	${11:code}
+}
+endsnippet
+
+snippet dfun4 "Basic function prototype with 4 parameters"
+/*
+** ${2:Brief}
+**
+** $4 -> ${6:description}
+** $9 -> ${9:description}
+** $10 -> ${12:description}
+** $13 -> ${15:description}
+*/
+${3:void} ${1:function}(${5:int} ${4:var}, ${8:int} ${7:var}, ${11:int} ${10:var}, ${14:int} ${13:var});
+endsnippet

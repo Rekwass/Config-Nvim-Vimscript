@@ -1,0 +1,85 @@
+# A valid snippet should starts with:
+# snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet fun "Create function without parameters"
+${1:fun} :: ${2|Int,Char,String,[String],a,IO (),()|}
+$1 = ${0:$2}
+endsnippet
+
+snippet fun1 "Create function with 1 parameter"
+${1:fun} :: ${2|Int,Char,String,[String],a,IO (),()|} -> ${3|Int,Char,String,[String],a,b,IO (),()|}
+$1 ${4:$2} = ${0:$2}
+endsnippet
+
+snippet fun2 "Create function with 2 parameters"
+${1:fun} :: ${2|Int,Char,String,[String],a,IO (),()|} -> ${3|Int,Char,String,[String],a,b,IO (),()|} -> ${4|Int,Char,String,[String],a,b,c,IO (),()|}
+$1 ${5:$2} ${6:$3} = ${0:$2}
+endsnippet
+
+snippet fun3 "Create function with 3 parameters"
+${1:fun} :: ${2|Int,Char,String,[String],a,IO (),()|} -> ${3|Int,Char,String,[String],a,b,IO (),()|} -> ${4|Int,Char,String,[String],a,b,c,IO (),()|} -> ${5|Int,Char,String,[String],a,b,c,d,IO (),()|}
+$1 ${6:$2} ${7:$3} ${8:$4} = ${0:$2}
+endsnippet
+
+snippet fun4 "Create function with 4 parameters"
+${1:fun} :: ${2|Int,Char,String,[String],a,IO (),()|} -> ${3|Int,Char,String,[String],a,b,IO (),()|} -> ${4|Int,Char,String,[String],a,b,c,IO (),()|} -> ${5|Int,Char,String,[String],a,b,c,d,IO (),()|} -> ${6|Int,Char,String,[String],a,b,c,d,e,IO (),()|}
+$1 ${7:$2} ${8:$3} ${9:$4} ${10:$5} = ${0:$2}
+endsnippet
+
+snippet tup "Create a tuple with one element"
+(${1:a})
+endsnippet
+
+snippet tup2 "Create a tuple with 2 elements"
+(${1:a}, ${2:b})
+endsnippet
+
+snippet tup3 "Create a tuple with 3 elements"
+(${1:a}, ${2:b}, ${3:c})
+endsnippet
+
+snippet ltup2 "Create a list of tuple with 2 elements"
+[(${1:a}, ${2:b})]
+endsnippet
+
+snippet ltup3 "Create a list of tuple with 3 elements"
+[(${1:a}, ${2:b}, ${3:c})]
+endsnippet
+
+snippet ld "Decompose a list"
+(${1: x} : $1s)
+endsnippet
+
+snippet test "Create a HUnit test"
+${1:func}Test${2:1} = TestCase (${3:assertEqual} "$1 ${4:description}" (${5:expected}) ($1 ${6:args}))
+endsnippet
+
+snippet testl "Create a HUnit test list"
+${1:func}Tests = TestList [TestLabel "$1 1" ${1}Test1]
+endsnippet
+
+snippet testc "Create a HUnit test label"
+TestLabel "${1:func} ${2:2}" ${1}Test$2
+endsnippet
